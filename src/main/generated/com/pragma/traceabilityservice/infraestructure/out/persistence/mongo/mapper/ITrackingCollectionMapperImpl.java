@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-28T16:43:43-0500",
+    date = "2023-09-28T23:48:19-0500",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
@@ -25,7 +25,7 @@ public class ITrackingCollectionMapperImpl implements ITrackingCollectionMapper 
         trackingCollection.setOrderId( trackingModel.getOrderId() );
         trackingCollection.setCustomerId( trackingModel.getCustomerId() );
         trackingCollection.setCustomerEmail( trackingModel.getCustomerEmail() );
-        trackingCollection.setCreatedAt( trackingModel.getCreatedAt() );
+        trackingCollection.setDatetime( trackingModel.getDatetime() );
         trackingCollection.setStatusPrevious( trackingModel.getStatusPrevious() );
         trackingCollection.setStatus( trackingModel.getStatus() );
         trackingCollection.setEmployeeId( trackingModel.getEmployeeId() );

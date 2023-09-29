@@ -7,7 +7,7 @@ public class TrackingModel {
     private Long orderId;
     private Long customerId;
     private String customerEmail;
-    private LocalDateTime createdAt;
+    private LocalDateTime datetime;
     private String statusPrevious;
     private String status;
     private Long employeeId;
@@ -16,12 +16,12 @@ public class TrackingModel {
     public TrackingModel() {
     }
 
-    public TrackingModel(String id, Long orderId, Long customerId, String customerEmail, LocalDateTime createdAt, String statusPrevious, String status, Long employeeId, String employeeEmail) {
+    public TrackingModel(String id, Long orderId, Long customerId, String customerEmail, LocalDateTime datetime, String statusPrevious, String status, Long employeeId, String employeeEmail) {
         this.id = id;
         this.orderId = orderId;
         this.customerId = customerId;
         this.customerEmail = customerEmail;
-        this.createdAt = createdAt;
+        this.datetime = datetime;
         this.statusPrevious = statusPrevious;
         this.status = status;
         this.employeeId = employeeId;
@@ -60,12 +60,12 @@ public class TrackingModel {
         this.customerEmail = customerEmail;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getDatetime() {
+        return datetime;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setDatetime(LocalDateTime datetime) {
+        this.datetime = datetime;
     }
 
     public String getStatusPrevious() {

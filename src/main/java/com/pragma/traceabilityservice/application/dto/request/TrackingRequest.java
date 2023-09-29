@@ -23,24 +23,21 @@ public class TrackingRequest {
     @Min(value = 1, message = "order_id must be a positive number")
     private Long customerId;
 
-    @NotBlank(message = "customer email is required")
     @Email(message = "email is invalid")
     private String customerEmail;
 
     @NotNull(message = "date is required")
     private LocalDateTime datetime;
 
-    @NotBlank(message = "previous status is required")
     private String statusPrevious;
 
     @NotBlank(message = "current status is required")
     private String status;
 
-    @NotNull(message = "order_id is required")
-    @Min(value = 1, message = "order_id must be a positive number")
+    @NotNull(message = "employee_id is required")
+    @Min(value = 0, message = "order_id must be a positive number")
     private Long employeeId;
 
-    @NotBlank(message = "employee email is required")
     @Email(message = "email is invalid")
     private String employeeEmail;
 }

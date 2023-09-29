@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-28T16:43:43-0500",
+    date = "2023-09-28T23:48:20-0500",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
@@ -24,6 +24,7 @@ public class ITrackingDtoMapperImpl implements ITrackingDtoMapper {
         trackingModel.setOrderId( trackingRequest.getOrderId() );
         trackingModel.setCustomerId( trackingRequest.getCustomerId() );
         trackingModel.setCustomerEmail( trackingRequest.getCustomerEmail() );
+        trackingModel.setDatetime( trackingRequest.getDatetime() );
         trackingModel.setStatusPrevious( trackingRequest.getStatusPrevious() );
         trackingModel.setStatus( trackingRequest.getStatus() );
         trackingModel.setEmployeeId( trackingRequest.getEmployeeId() );
