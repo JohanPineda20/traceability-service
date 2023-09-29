@@ -4,6 +4,7 @@ import com.pragma.traceabilityservice.application.dto.request.TrackingRequest;
 import com.pragma.traceabilityservice.application.dto.response.TrackingResponse;
 import com.pragma.traceabilityservice.application.handler.ITrackingHandler;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -41,8 +42,16 @@ public class TrackingController {
         trackingHandler.trackingOrder(trackingRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
+    @Operation(summary = "Get history of order status changes")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "History checked", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TrackingResponse.class)))),
+            @ApiResponse(responseCode = "400", description = "Bad request: wrong input data", content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Exception"))),
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Exception"))),
+            @ApiResponse(responseCode = "404", description = "the order doesn't have history", content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Exception"))),
+    })
+    @SecurityRequirement(name = "jwt")
     @GetMapping
+    @PreAuthorize("hasAuthority('CUSTOMER')")
     public ResponseEntity<List<TrackingResponse>> getHistoryOrder(@RequestParam Long orderId){
         return ResponseEntity.ok(trackingHandler.getHistoryOrder(orderId));
     }

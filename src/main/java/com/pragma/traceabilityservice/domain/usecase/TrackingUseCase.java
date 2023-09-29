@@ -25,7 +25,7 @@ public class TrackingUseCase implements ITrackingServicePort {
     @Override
     public List<TrackingModel> getHistoryOrder(Long orderId) {
         List<TrackingModel> trackingModelList = trackingPersistencePort.getHistoryOrder(orderId);
-        if(trackingModelList.isEmpty()) throw new DataNotFoundException("the order don't have history");
+        if(trackingModelList.isEmpty()) throw new DataNotFoundException("the order doesn't have history");
         return trackingModelList;
     }
 }
