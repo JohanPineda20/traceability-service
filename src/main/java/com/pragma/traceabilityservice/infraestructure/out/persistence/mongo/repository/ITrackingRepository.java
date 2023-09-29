@@ -3,6 +3,8 @@ package com.pragma.traceabilityservice.infraestructure.out.persistence.mongo.rep
 import com.pragma.traceabilityservice.infraestructure.out.persistence.mongo.collection.TrackingCollection;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ITrackingRepository extends MongoRepository<TrackingCollection,String> {
+import java.util.List;
 
+public interface ITrackingRepository extends MongoRepository<TrackingCollection,String> {
+    List<TrackingCollection> findByOrderId(Long orderId);
 }

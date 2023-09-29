@@ -7,6 +7,8 @@ import com.pragma.traceabilityservice.infraestructure.out.persistence.mongo.mapp
 import com.pragma.traceabilityservice.infraestructure.out.persistence.mongo.repository.ITrackingRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class TrackingMongoAdapter implements ITrackingPersistencePort {
 
@@ -16,5 +18,10 @@ public class TrackingMongoAdapter implements ITrackingPersistencePort {
     @Override
     public void trackingOrder(TrackingModel trackingModel) {
         trackingRepository.save(trackingCollectionMapper.mapToTrackingCollection(trackingModel));
+    }
+
+    @Override
+    public List<TrackingModel> getHistoryOrder(Long orderId) {
+        return trackingCollectionMapper.mapToTrackingModelList(trackingRepository.findByOrderId(orderId));
     }
 }

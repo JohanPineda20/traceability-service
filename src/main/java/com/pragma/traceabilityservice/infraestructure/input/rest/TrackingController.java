@@ -1,6 +1,7 @@
 package com.pragma.traceabilityservice.infraestructure.input.rest;
 
 import com.pragma.traceabilityservice.application.dto.request.TrackingRequest;
+import com.pragma.traceabilityservice.application.dto.response.TrackingResponse;
 import com.pragma.traceabilityservice.application.handler.ITrackingHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,10 +15,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @Tag(name = "Traceability Controller")
 @RestController
 @RequestMapping("/tracking")
@@ -41,4 +42,8 @@ public class TrackingController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @GetMapping
+    public ResponseEntity<List<TrackingResponse>> getHistoryOrder(@RequestParam Long orderId){
+        return ResponseEntity.ok(trackingHandler.getHistoryOrder(orderId));
+    }
 }
